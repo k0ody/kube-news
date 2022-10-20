@@ -30,7 +30,7 @@ metadata:
   name: postgre
 spec:
   selector:
-    app: postgres
+    app: postgre
   ports:
     - port: 5432
   type: ClusterIP
@@ -40,7 +40,7 @@ kind: Deployment
 metadata:
   name: web
 spec:
-  
+  replicas: 2
   selector:
     matchLabels:
       app: web
@@ -62,7 +62,7 @@ spec:
           - name: DB_PASSWORD
             value: "Pg#123"
           - name: DB_HOST
-            value: "postgres"
+            value: "postgre"
 ---
 apiVersion: v1
 kind: Service
